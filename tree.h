@@ -20,13 +20,13 @@
 //TODO 6) func pointer?
 //TODO 7) recursion?
 //TODO 8) struct size
-
+//TODO 9) обертка для dtor
 #define $ printf("\t\t\t---ON LINE %d IN FUNCTION %s---\n", __LINE__, __func__);
 
 #define TREE_CHECK(ret_val)					\
 	{							\
 	}			
-typedef int tval_t;
+typedef char* tval_t;
 
 struct TNODE {
 	tval_t data;
@@ -56,7 +56,6 @@ int TreePrintNode(TNODE *node);
 TNODE *TreeFind(TNODE *node);
 
 void TreeDump(TNODE *node);
-
 void TreeDotDump(TNODE *node);
 void VisitPrint(TNODE *node);
 #endif // TREE_H

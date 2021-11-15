@@ -81,6 +81,7 @@ void TreeTraverseIn(TNODE *node, void (*visitor)(TNODE *node))
 	
 	if (node->right)
 		TreeTraverseIn(node->right, visitor);
+
 }
 
 void TreeTraversePre(TNODE *node, void (*visitor)(TNODE *node))
@@ -130,7 +131,7 @@ static void set_node(TNODE *node, tval_t val, TNODE *left, TNODE *right)
 
 void VisitPrint(TNODE *node)
 {
-	printf("node : [  %p  ], data : [  %d  ], left : [  %p  ], right : [  %p  ]\n", 
+	printf("node : [  %p  ], data : [  %s  ], left : [  %p  ], right : [  %p  ]\n", 
 		node, node->data, node->left, node->right);
 }
 
@@ -141,13 +142,15 @@ void TreeDotDump(TNODE *node)
 
 	fprintf(file, "node%p [shape=plaintext\n\
 			\t\tlabel=<<table border='1' cellborder='1'>\n\
-			\t\t<tr><td colspan=\"2\" bgcolor=\"lightskyblue\" >Data: %d</td></tr>\n\
+			\t\t<tr><td colspan=\"2\" bgcolor=\"lightskyblue\" >%s</td></tr>\n\
 			\t\t<tr><td port= \"lchild\">Left</td><td port=\"rchild\">Right</td></tr>\n\
 			\t</table>>];\n", node, node->data);
 	
 	if (node->left)
-		fprintf(file, "\tnode%p:lchild -> node%p[style=bold, arrowhead=vee];\n", node, node->left);
+		fprintf(file, "\tnode%p:lchild -> node%p[style=bold, arrowhead=vee label = \"Yes\"];\n",
+			       	node, node->left);
 
 	if (node->right)
-		fprintf(file, "\tnode%p:rchild -> node%p[style=bold, arrowhead=vee];\n", node, node->right);
+		fprintf(file, "\tnode%p:rchild -> node%p[style=bold, arrowhead=vee label = \"No\"];\n", 
+				node, node->right);
 }
