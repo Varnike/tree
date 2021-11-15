@@ -1,0 +1,32 @@
+digraph dump_graph {
+	rankdir=TV; 
+node0x4a5c160 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Data: 12</td></tr>
+					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
+				</table>>];
+node0x4a5c0a0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Data: 11</td></tr>
+					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
+				</table>>];
+	node0x4a5c0a0:lchild -> node0x4a5c160[style=bold, arrowhead=vee];
+	node0x4a5c0a0:rchild -> node0x4a5c1c0[style=bold, arrowhead=vee];
+node0x4a5c1c0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Data: 13</td></tr>
+					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
+				</table>>];
+node0x4a5c040 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Data: 10</td></tr>
+					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
+				</table>>];
+	node0x4a5c040:lchild -> node0x4a5c0a0[style=bold, arrowhead=vee];
+	node0x4a5c040:rchild -> node0x4a5c100[style=bold, arrowhead=vee];
+node0x4a5c100 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Data: 21</td></tr>
+					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
+				</table>>];
+}
