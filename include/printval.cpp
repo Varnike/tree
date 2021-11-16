@@ -20,3 +20,8 @@ void printStackVal(size_t value, FILE *file)
 {
 	fprintf(file, "%zu\n", value);
 }
+
+void printStackVal(void *value, FILE *file)
+{
+	fprintf(file, "%p\n", value);
+}

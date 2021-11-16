@@ -3,20 +3,28 @@
 static int guess_object(TNODE *root, Stack *stack);
 static int add_new_node(TNODE *node);
 static int define_object(TNODE *node, Stack *stack);
+static int get_answer(void);
 
 int AkinatorGuess(TNODE *root)
 {
 	//TODO check!!!
 	TNODE *node = root;
 	Stack stack = {};
+	
+	StackCtor(&stack, 8);
+	ERRNUM_CHECK(ERRNUM);
 
 	if (guess_object(root, &stack) == 1) {
 		printf("EZ!\n");
+		VisitPrint((TNODE *)StackPop(&stack));
 		//define_object(root, stack);
-		return 0;	
 	} else {
-		add_new_node(root);	
+		add_new_node((TNODE *)StackPop(&stack));
 	}
+
+	StackDtor(&stack);
+	ERRNUM_CHECK(ERRNUM);
+
 	return 0;
 }
 
@@ -48,27 +56,38 @@ int AkinatorProcess(TNODE *tree)
 	} while(mode != 0);
 }
 
-//TODO no external buff
-static int get_answer(char *answ_buff)
+static int get_answer(void)
 {
-	scanf("%s", answ_buff);	
-	
-	if (strncmp("y", answ_buff, 2) == 0)
-		return POS_ANSW;
-	 else if (strncmp("n", answ_buff, 2) == 0) 
-		return NEG_ANSW;
+	char *answ_buff = NULL;
+	scanf("%ms", &answ_buff);
 
-	return INV_ANSW;		
+	if (answ_buff == NULL) {
+		ERRNUM = CALLOC_ERR;
+		return -1;
+	}	
+	
+	int answ = 0;
+
+	if (strcmp("y", answ_buff) == 0)
+		answ = POS_ANSW;
+	else if (strcmp("n", answ_buff) == 0) 
+		answ = NEG_ANSW;
+	else 
+		answ = INV_ANSW;
+
+	free(answ_buff);
+	return answ;
 }
 
 static int guess_object(TNODE *node, Stack *stack)
 {
-	char *answ_buff = (char *)calloc(sizeof(char), INPUT_BUFF_SIZE); //TODO check for shit
-
 	while (node->left && node->right) {
+		StackPush(stack, node);
+		ERRNUM_CHECK(-1);
+
 		printf("%s\n", node->data);
 
-		switch(get_answer(answ_buff)) {
+		switch(get_answer()) {
 		case POS_ANSW:
 			node = node->left;
 			break;
@@ -80,20 +99,38 @@ static int guess_object(TNODE *node, Stack *stack)
 			break;
 		}
 	}
-
+	
+	StackPush(stack, node);
 	//TODO check data
 	printf("Is it %s\n", node->data);	
-	int right_guess = get_answer(answ_buff);
-
-	free(answ_buff);
-
+	int right_guess = get_answer();
+	
 	return right_guess;
 }
 
 static int add_new_node(TNODE *node)
 {
-	char name = NULL;
-	char def  = NULL;
-	//TODO for future
-	printf("");
+	char *name = NULL;
+	char *def  = NULL;
+
+	printf("Enter object name:\n");
+	scanf("%ms", &name);
+	printf("%s differs from %s: %s is ...\n", name, node->data, name);
+	scanf("%ms", &def);
+
+	printf("Adding new node: %s and %s\n\n", name, def);
+	
+	char *old_object = node->data;
+	//TODO language
+	
+	ERRNUM = 0;
+
+	TreeInsert(node, RIGHT,  node->data);
+	TreeInsert(node, LEFT,   name);
+	
+	ERRNUM_CHECK(ERRNUM);
+
+	node->data = def;
+	//TODO for future	
 }
+

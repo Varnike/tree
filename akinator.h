@@ -3,8 +3,12 @@
 
 #include "tree.h"
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "include/stack.h"
 
+//TODO perror
+//#define ERRNUM_CHECK(ret_val) {if(ERRNUM) return ret_val;}
 enum ANSWER_STATE {
 	POS_ANSW =  1,
 	NEG_ANSW =  0,

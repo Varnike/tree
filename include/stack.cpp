@@ -63,7 +63,7 @@ val_t StackPop(Stack *stack)
 	POP_ASSERT_OK;
 	
 	if (StackCheck(stack))
-		return ERRNUM;
+		return NULL;//ERRNUM;
 	
 	if (stack->size <= 0) {
 		ERRNUM = UNDERFLOW_ERR;

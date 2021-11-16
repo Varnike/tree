@@ -58,6 +58,16 @@ const char *errmsg(int errt)
 		"List invalid free list node!",
 		"Bad list for ctor!"
 	};
+	
+	const char *tree_messages[] = {
+		"Tree broken: loop found!",
+		"Tree busy parent for insertion(not NULL pointer)!",
+		"Tree NULL data pointer error!",
+		"Tree only one child error!",
+		"Tree same left & right child error!",
+		"Tree NULL node pointer error!",	
+		"Tree bad root node for error!"
+	};
 
 	switch (errt/100) {
 	case 0:
@@ -69,6 +79,8 @@ const char *errmsg(int errt)
 	case 2:
 		return list_messages[errt - 200];
 		break;
+	case 3:
+		return tree_messages[errt - 300];
 	default:
 		return messages[UNKNOWN_ERR];
 		break;

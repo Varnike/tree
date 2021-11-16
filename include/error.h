@@ -92,12 +92,19 @@ enum list_errs {
 	LIST_LOGIC_ADDR_ERR   = 213
 };
 
+const int TREE_ERRS = 7;
 /*
  * TREE errors
  */
 
 enum tree_errs {
-	TREE_BUSY_PARENT = 301
+	TREE_LOOP_FOUND    = 300,
+	TREE_BUSY_PARENT   = 301,
+	TREE_NULL_DATA     = 302,
+	TREE_ONE_CHILD    = 303,
+	TREE_SAME_CHILD     = 304,
+	TREE_NULL_NODE     = 305,
+	TREE_BAD_CTOR_ROOT = 306
 };
 /*
  * Returns a pointer to the textual description of the code errtype.

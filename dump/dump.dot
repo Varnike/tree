@@ -1,30 +1,30 @@
 digraph dump_graph {
 	rankdir=TV; 
-node0x55a9f8af3f10 [shape=plaintext
+node0x55708119c350 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >windows</td></tr>
 					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
 				</table>>];
-node0x55a9f8af3ed0 [shape=plaintext
+node0x55708119c2f0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >the worst?</td></tr>
 					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
 				</table>>];
-	node0x55a9f8af3ed0:lchild -> node0x55a9f8af3f10[style=bold, arrowhead=vee label = "Yes"];
-	node0x55a9f8af3ed0:rchild -> node0x55a9f8af3f30[style=bold, arrowhead=vee label = "No"];
-node0x55a9f8af3f30 [shape=plaintext
+	node0x55708119c2f0:lchild -> node0x55708119c350[style=bold, arrowhead=vee label = "Yes"];
+	node0x55708119c2f0:rchild -> node0x55708119c380[style=bold, arrowhead=vee label = "No"];
+node0x55708119c380 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >macos</td></tr>
 					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
 				</table>>];
-node0x55a9f8af3eb0 [shape=plaintext
+node0x55708119beb0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >shit system?</td></tr>
 					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>
 				</table>>];
-	node0x55a9f8af3eb0:lchild -> node0x55a9f8af3ed0[style=bold, arrowhead=vee label = "Yes"];
-	node0x55a9f8af3eb0:rchild -> node0x55a9f8af3ef0[style=bold, arrowhead=vee label = "No"];
-node0x55a9f8af3ef0 [shape=plaintext
+	node0x55708119beb0:lchild -> node0x55708119c2f0[style=bold, arrowhead=vee label = "Yes"];
+	node0x55708119beb0:rchild -> node0x55708119c320[style=bold, arrowhead=vee label = "No"];
+node0x55708119c320 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >linux</td></tr>
 					<tr><td port= "lchild">Left</td><td port="rchild">Right</td></tr>

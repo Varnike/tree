@@ -91,10 +91,11 @@
 #define SET_HASH ;
 
 #endif
-typedef double val_t;
+typedef void* val_t;
 
+#define POISONED_VAL NULL /* for pointers !*/
 const int POISONED_MEM = 1488;
-const int POISONED_VAL = 0xDEDBEAF;
+//const void* POISONED_VAL = 0xDEDBEAF;
 const uint64_t CANARYVAL = 0xDABABAF;
 const int MINIMUM_STACK_SIZE = 8;
 
