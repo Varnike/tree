@@ -3,31 +3,31 @@
 static void set_node(TNODE *node, tval_t val, TNODE *left = NULL, TNODE *right = NULL);
 static void visit_check(TNODE *node, int flagval = 0);
 
+static int TreeTraversePre(TNODE *root);
+static int TreeTraverseDelete(TNODE *root);
+
+
 FILE *file = NULL;
 
-int TreeCtor(TREE *tree, tval_t val)
+int TreeCtor(TNODE **root, tval_t val)
 {
-	CHECK_(tree->root != NULL, TREE_BAD_CTOR_ROOT);
+	CHECK_(*root != NULL, TREE_BAD_CTOR_ROOT);
 
-	assert(tree->root == NULL);
+	//assert(root == NULL);
 
-	TNODE *root = (TNODE*)calloc(1,sizeof(TNODE));
+	*root = (TNODE*)calloc(1,sizeof(TNODE));
 
-	if (root == NULL)
+	if (*root == NULL)
 		return ERRNUM = CALLOC_ERR;
 
 	
-	set_node(root, val);
+	set_node(*root, val);
 	
-	tree->root = root;
-
-	assert(root);
 	return 0;
 }
 
 int TreeInsert(TNODE *parent, int side, tval_t data)
 {
-	//assert(parent);
 	TREE_CHECK(parent, ERRNUM);
 
 	TNODE *node = (TNODE*)calloc(1,sizeof(TNODE));
@@ -66,54 +66,42 @@ int TreeDtor(TNODE *node)
 {
 	TREE_CHECK(node, ERRNUM);
 	
-	TreeTraversePost(node, (void(*)(TNODE *))free);		
-	
+	TreeTraverseDelete(node);
+	ERRNUM_CHECK(ERRNUM);	
+
 	return 0;
 }
-
-void TreeTraversePost(TNODE *node, void (*visitor)(TNODE *node))
+//TODO ERRS
+static int TreeTraverseDelete(TNODE *node)
 {
+	ERRNUM_CHECK(ERRNUM);
+
 	if (!node)
-		return;
+		return ERRNUM = TREE_NULL_NODE;
 	
 	if (node->left)
-		TreeTraversePost(node->left, visitor);
+		TreeTraverseDelete(node->left);
 	
 	if (node->right)
-		TreeTraversePost(node->right, visitor);
+		TreeTraverseDelete(node->right);
 	
-	visitor(node);
+	free(node);
 }
 
-
-
-void TreeTraverseIn(TNODE *node, void (*visitor)(TNODE *node))
+static int TreeTraversePre(TNODE *node)
 {
+	ERRNUM_CHECK(ERRNUM);
+
 	if (!node)
-		return;
-	
-	visitor(node);
+		return ERRNUM = TREE_NULL_NODE;
 	
 	if (node->left)
-		TreeTraverseIn(node->left, visitor);
+		TreeTraversePre(node->left);
 	
-	if (node->right)
-		TreeTraverseIn(node->right, visitor);
-
-}
-
-void TreeTraversePre(TNODE *node, void (*visitor)(TNODE *node))
-{
-	if (!node)
-		return;
-	
-	if (node->left)
-		TreeTraversePre(node->left, visitor);
-	
-	visitor(node);
+	TreeDotDump(node);
 		
 	if (node->right)
-		TreeTraversePre(node->right, visitor);
+		TreeTraversePre(node->right);
 }
 
 void TreeDump(TNODE *root)
@@ -130,8 +118,9 @@ void TreeDump(TNODE *root)
 
 	fprintf(file, "digraph dump_graph {\n\trankdir=TV; \n");
 
-	TreeTraversePre(root, TreeDotDump);
-	
+	TreeTraversePre(root);
+	ERRNUM_CHECK(;);
+
 	fprintf(file, "}\n");
 		
 	fclose(file);
@@ -217,14 +206,14 @@ void VisitPrint(TNODE *node)
 
 void TreeDotDump(TNODE *node)
 {
-	assert(node);
-	assert(file);
+	if (!node || !file)
+		return;
 
 	fprintf(file, "node%p [shape=plaintext\n\
 			\t\tlabel=<<table border='1' cellborder='1'>\n\
 			\t\t<tr><td colspan=\"2\" bgcolor=\"lightskyblue\" >%s</td></tr>\n\
-			\t\t<tr><td port= \"lchild\">Left</td><td port=\"rchild\">Right</td></tr>\n\
-			\t</table>>];\n", node, node->data);
+			\t\t<tr><td port= \"lchild\">L:%p</td><td port=\"rchild\">R: %p</td></tr>\n\
+			\t</table>>];\n", node, node->data, node->left, node->right);
 	
 	if (node->left)
 		fprintf(file, "\tnode%p:lchild -> node%p[style=bold, arrowhead=vee label = \"Yes\"];\n",

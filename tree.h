@@ -3,6 +3,7 @@
 
 #include "include/error.h"
 #include "config.h"
+#include "include/onegin.h"
 
 #include <cstring>
 #include <stdio.h>
@@ -11,13 +12,6 @@
 #include <typeinfo>
 #include <stdint.h>
 #include <inttypes.h>
-
-
-//TODO 4) html dump
-//TODO 5) TREE struct?
-//TODO 6) func pointer?
-//TODO 7) recursion?
-//TODO 8) struct size
 
 //#define NODE_BOTH_CHILD_CHECK
 #define VALIDATE_TREE_INTEGRY
@@ -31,21 +25,27 @@
 
 #define CHECK_(what, code)      if (what) SET_ERR (code)
 
-#define ERRNUM_CHECK(ret_val)   {if(ERRNUM) return ret_val;}
+#define ERRNUM_CHECK(ret_val)   						\
+	{									\
+		if(ERRNUM) {							\
+			perror(errmsg(ERRNUM));					\
+			return ret_val;						\
+		}								\
+	}
 
 #define TREE_CHECK(node, ret_val)						\
 	{									\
 		if (TreeCheck(node)) {						\
 			perror(errmsg(ERRNUM));					\
-			EXIT_ERR(ret_val);					\
+			TREE_EXIT_ERR(ret_val);					\
 		}								\
 	}			
 
 #if DEBUG == 1                 
-#define EXIT_ERR(ret) assert(!"ok");
+#define TREE_EXIT_ERR(ret) assert(!"ok");
 
 #else
-#define EXIT_ERR(ret) return ret;
+#define TREE_EXIT_ERR(ret) return ret;
 #endif
 
 typedef char* tval_t;
@@ -71,12 +71,7 @@ enum SUBTREE_SIDE {
 
 int TreeInsert(TNODE *parent, int side, tval_t data);
 
-//TODO one func
-void TreeTraversePre(TNODE *root, void (*visitor)(TNODE *node));
-void TreeTraverseIn(TNODE *root, void (*visitor)(TNODE *node));
-void TreeTraversePost(TNODE *root, void (*visitor)(TNODE *node));
-
-int TreeCtor(TREE *tree, tval_t val);
+int TreeCtor(TNODE **root, tval_t val);
 int TreeDtor(TNODE *node);
 int TreePrintNode(TNODE *node);
 

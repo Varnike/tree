@@ -172,28 +172,30 @@ int StackSetFileName(Stack *stack, const char *name)
 	return 0;
 }
 
+#define CHECK_STACK(what, code)      if (what) SET_ERR (code)
 
 int StackCheck(Stack *stack)
 {
-	CHECK_(stack == NULL, 							NULLPTR_STACK);
-	CHECK_(stack->data == NULL, 						UNINIT_DATA);
-	CHECK_(stack->data == (val_t *)(POISONED_MEM),				POISONED_STACK);
-	CHECK_(stack->size > stack->capacity, 					STACK_OVERFLOW);
-	CHECK_(stack->size < 0, 						UNDERFLOW_ERR);
+	CHECK_STACK(stack == NULL, 							NULLPTR_STACK);
+	CHECK_STACK(stack->data == NULL, 						UNINIT_DATA);
+	CHECK_STACK(stack->data == (val_t *)(POISONED_MEM),				POISONED_STACK);
+	CHECK_STACK(stack->size > stack->capacity, 					STACK_OVERFLOW);
+	CHECK_STACK(stack->size < 0, 						UNDERFLOW_ERR);
 #if CANARIES_CHECK == 1	
-	CHECK_(stack->LCANARY != CANARYVAL && stack->RCANARY != CANARYVAL, 	INVALID_CANARIES);
-	CHECK_(stack->LCANARY != CANARYVAL, 					INVALID_LCANARY);
-	CHECK_(stack->RCANARY != CANARYVAL, 					INVALID_RCANARY);
-	CHECK_(*(uint64_t*)((char *)stack->data-sizeof(uint64_t)) != CANARYVAL, INVALID_DATA_LCANARY);
-	CHECK_(*(uint64_t*)(stack->data + stack->capacity) != CANARYVAL,        INVALID_DATA_RCANARY);
+	CHECK_STACK(stack->LCANARY != CANARYVAL && stack->RCANARY != CANARYVAL, 	INVALID_CANARIES);
+	CHECK_STACK(stack->LCANARY != CANARYVAL, 					INVALID_LCANARY);
+	CHECK_STACK(stack->RCANARY != CANARYVAL, 					INVALID_RCANARY);
+	CHECK_STACK(*(uint64_t*)((char *)stack->data-sizeof(uint64_t)) != CANARYVAL, INVALID_DATA_LCANARY);
+	CHECK_STACK(*(uint64_t*)(stack->data + stack->capacity) != CANARYVAL,        INVALID_DATA_RCANARY);
 #endif
 
 #if HASH_CHECK == 1
-	CHECK_(stack->hash != StackHash(stack),					INVALID_HASH);
+	CHECK_STACK(stack->hash != StackHash(stack),					INVALID_HASH);
 #endif	
 	return NO_ERR;
 }
 
+#undef CHECK_STACK
 
 #define file stdout
 #undef file

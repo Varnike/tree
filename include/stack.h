@@ -82,8 +82,6 @@
 
 #define SET_ERR(errtype)        return ERRNUM = errtype;
 
-#define CHECK_(what, code)      if (what) SET_ERR (code)
-
 #if HASH_CHECK == 1
 #define SET_HASH                stack->hash = StackHash(stack);
 

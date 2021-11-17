@@ -98,13 +98,14 @@ const int TREE_ERRS = 7;
  */
 
 enum tree_errs {
-	TREE_LOOP_FOUND    = 300,
-	TREE_BUSY_PARENT   = 301,
-	TREE_NULL_DATA     = 302,
-	TREE_ONE_CHILD    = 303,
+	TREE_LOOP_FOUND     = 300,
+	TREE_BUSY_PARENT    = 301,
+	TREE_NULL_DATA      = 302,
+	TREE_ONE_CHILD      = 303,
 	TREE_SAME_CHILD     = 304,
-	TREE_NULL_NODE     = 305,
-	TREE_BAD_CTOR_ROOT = 306
+	TREE_NULL_NODE      = 305,
+	TREE_BAD_CTOR_ROOT  = 306,
+	AKINATOR_SYNTAX_ERR = 307
 };
 /*
  * Returns a pointer to the textual description of the code errtype.
