@@ -141,7 +141,7 @@ static void set_node(TNODE *node, tval_t val, TNODE *left, TNODE *right)
 int _tree_check(TNODE *node)
 {
 	CHECK_(node == NULL,  						TREE_NULL_NODE);
-	CHECK_(node->data == NULL,  					TREE_NULL_DATA);
+	CHECK_(node->data.strptr == NULL, 				TREE_NULL_DATA);
 	CHECK_((node->left == node->right) && (node->left != NULL),  	TREE_SAME_CHILD);
 #ifdef NODE_BOTH_CHILD_CHECK
 	CHECK_((node->left == NULL) ^ (node->right == NULL),		TREE_ONE_CHILD);
@@ -200,8 +200,8 @@ static void visit_check(TNODE *node, int flagval)
 
 void VisitPrint(TNODE *node)
 {
-	printf("node : [  %p  ], data : [  %s  ], left : [  %p  ], right : [  %p  ]\n", 
-		node, node->data, node->left, node->right);
+	printf("node : [  %p  ], data : [%s], len : [  %d  ], left : [  %p  ], right : [  %p  ]\n", 
+		node, node->data.strptr, node->data.len, node->left, node->right);
 }
 
 void TreeDotDump(TNODE *node)
@@ -213,7 +213,7 @@ void TreeDotDump(TNODE *node)
 			\t\tlabel=<<table border='1' cellborder='1'>\n\
 			\t\t<tr><td colspan=\"2\" bgcolor=\"lightskyblue\" >%s</td></tr>\n\
 			\t\t<tr><td port= \"lchild\">L:%p</td><td port=\"rchild\">R: %p</td></tr>\n\
-			\t</table>>];\n", node, node->data, node->left, node->right);
+			\t</table>>];\n", node, node->data.strptr, node->left, node->right);
 	
 	if (node->left)
 		fprintf(file, "\tnode%p:lchild -> node%p[style=bold, arrowhead=vee label = \"Yes\"];\n",

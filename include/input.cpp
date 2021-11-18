@@ -74,3 +74,9 @@ int count_lines(char *str, const size_t len)
 	}
 	return cnt;
 }
+
+strsize set_strsize(int len, char *strptr, char *realptr)
+{
+	strsize tmp = {strptr, realptr, len};
+	return tmp;
+}

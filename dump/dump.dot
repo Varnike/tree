@@ -1,42 +1,42 @@
 digraph dump_graph {
 	rankdir=TV; 
-node0x5653754b0690 [shape=plaintext
-					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >CentOS</td></tr>
-					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
-				</table>>];
-node0x5653754b0660 [shape=plaintext
-					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >Doesn't_have_ui </td></tr>
-					<tr><td port= "lchild">L:0x5653754b0690</td><td port="rchild">R: 0x5653754b06c0</td></tr>
-				</table>>];
-	node0x5653754b0660:lchild -> node0x5653754b0690[style=bold, arrowhead=vee label = "Yes"];
-	node0x5653754b0660:rchild -> node0x5653754b06c0[style=bold, arrowhead=vee label = "No"];
-node0x5653754b06c0 [shape=plaintext
+node0x563eebe3a5a0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >windows</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x5653754b0630 [shape=plaintext
+node0x563eebe3a560 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >the worst?   </td></tr>
-					<tr><td port= "lchild">L:0x5653754b0660</td><td port="rchild">R: 0x5653754b06f0</td></tr>
+					<tr><td colspan="2" bgcolor="lightskyblue" >the worst</td></tr>
+					<tr><td port= "lchild">L:0x563eebe3a5a0</td><td port="rchild">R: 0x563eebe3a5e0</td></tr>
 				</table>>];
-	node0x5653754b0630:lchild -> node0x5653754b0660[style=bold, arrowhead=vee label = "Yes"];
-	node0x5653754b0630:rchild -> node0x5653754b06f0[style=bold, arrowhead=vee label = "No"];
-node0x5653754b06f0 [shape=plaintext
+	node0x563eebe3a560:lchild -> node0x563eebe3a5a0[style=bold, arrowhead=vee label = "Yes"];
+	node0x563eebe3a560:rchild -> node0x563eebe3a5e0[style=bold, arrowhead=vee label = "No"];
+node0x563eebe3a5e0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >macos</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x5653754b0600 [shape=plaintext
+node0x563eebe3a520 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >shit system?   </td></tr>
-					<tr><td port= "lchild">L:0x5653754b0630</td><td port="rchild">R: 0x5653754b0720</td></tr>
+					<tr><td colspan="2" bgcolor="lightskyblue" >shit system</td></tr>
+					<tr><td port= "lchild">L:0x563eebe3a560</td><td port="rchild">R: 0x563eebe3a620</td></tr>
 				</table>>];
-	node0x5653754b0600:lchild -> node0x5653754b0630[style=bold, arrowhead=vee label = "Yes"];
-	node0x5653754b0600:rchild -> node0x5653754b0720[style=bold, arrowhead=vee label = "No"];
-node0x5653754b0720 [shape=plaintext
+	node0x563eebe3a520:lchild -> node0x563eebe3a560[style=bold, arrowhead=vee label = "Yes"];
+	node0x563eebe3a520:rchild -> node0x563eebe3a620[style=bold, arrowhead=vee label = "No"];
+node0x563eebe3a660 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Walter White</td></tr>
+					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
+				</table>>];
+node0x563eebe3a620 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >chemistry teacher</td></tr>
+					<tr><td port= "lchild">L:0x563eebe3a660</td><td port="rchild">R: 0x563eebe3a6a0</td></tr>
+				</table>>];
+	node0x563eebe3a620:lchild -> node0x563eebe3a660[style=bold, arrowhead=vee label = "Yes"];
+	node0x563eebe3a620:rchild -> node0x563eebe3a6a0[style=bold, arrowhead=vee label = "No"];
+node0x563eebe3a6a0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >linux</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>

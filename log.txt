@@ -1,13 +1,1 @@
-ERROR : Uninizialized stack data!
-Stack<Pv>[0x7ffc6e22a1e0]:ERROR!; "stack" called from StackPush at include/stack.cpp (97)
-	structure left canary = 0
-	structure right canary = 0
-{
-	capasity = 0;
-	size = 0;
-	data[(nil)]
-	{
-		[0] = NULL;
-	}
-}
-
+ERROR : Stack NULL pointer!

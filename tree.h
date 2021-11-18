@@ -48,7 +48,7 @@
 #define TREE_EXIT_ERR(ret) return ret;
 #endif
 
-typedef char* tval_t;
+typedef strsize tval_t;
 
 struct TNODE {
 	tval_t data;

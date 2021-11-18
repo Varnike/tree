@@ -41,5 +41,6 @@ int readNcnt(textBuff *btext);
 int count_lines(char *str, const size_t len);
 int read_in_str(textBuff *btext);
 int isTrash(char c);
+strsize set_strsize(int len, char *strptr, char *realptr = NULL);
 
 #endif // INPUT_H

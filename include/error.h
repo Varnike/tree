@@ -105,7 +105,10 @@ enum tree_errs {
 	TREE_SAME_CHILD     = 304,
 	TREE_NULL_NODE      = 305,
 	TREE_BAD_CTOR_ROOT  = 306,
-	AKINATOR_SYNTAX_ERR = 307
+	AKINATOR_SYNTAX_ERR = 307,
+	AKINATOR_BAD_INIT_STR = 308,
+	AKINATOR_NULL_ARG     = 309,
+	AKINATOR_BUFF_OVERFLOW= 310
 };
 /*
  * Returns a pointer to the textual description of the code errtype.
