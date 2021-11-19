@@ -1,0 +1,12 @@
+{ inanimate { good operation system { linux } { windows } } { chemistry teacher { Walter White } { soviet detective { Varnike } { wizard { Harry Potter } { Rust Kolhe } } } } } 
+node : [  0x558b680723c0  ], data : [linux], len : [  5  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b68072400  ], data : [windows], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b68072380  ], data : [good operation system], len : [  22  ], left : [  0x558b680723c0  ], right : [  0x558b68072400  ]
+node : [  0x558b68072480  ], data : [Walter White], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b68072500  ], data : [Varnike], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b68072580  ], data : [Harry Potter], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b680725c0  ], data : [Rust Kolhe], len : [  10  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x558b68072540  ], data : [wizard], len : [  7  ], left : [  0x558b68072580  ], right : [  0x558b680725c0  ]
+node : [  0x558b680724c0  ], data : [soviet detective], len : [  17  ], left : [  0x558b68072500  ], right : [  0x558b68072540  ]
+node : [  0x558b68072440  ], data : [chemistry teacher], len : [  18  ], left : [  0x558b68072480  ], right : [  0x558b680724c0  ]
+node : [  0x558b68072340  ], data : [inanimate], len : [  10  ], left : [  0x558b68072380  ], right : [  0x558b68072440  ]

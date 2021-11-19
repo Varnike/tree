@@ -30,7 +30,7 @@ struct strsize {
 
 struct textBuff {
         int linecnt;
-        size_t buffsize;
+        int buffsize;
         strsize *str;
         char *buff;
         FILE *file_out;

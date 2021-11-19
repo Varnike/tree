@@ -1,44 +1,68 @@
 digraph dump_graph {
 	rankdir=TV; 
-node0x563eebe3a5a0 [shape=plaintext
+node0x558b680723c0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >linux</td></tr>
+					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
+				</table>>];
+node0x558b68072380 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >good operation system</td></tr>
+					<tr><td port= "lchild">L:0x558b680723c0</td><td port="rchild">R: 0x558b68072400</td></tr>
+				</table>>];
+	node0x558b68072380:lchild -> node0x558b680723c0[style=bold, arrowhead=vee label = "Yes"];
+	node0x558b68072380:rchild -> node0x558b68072400[style=bold, arrowhead=vee label = "No"];
+node0x558b68072400 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >windows</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x563eebe3a560 [shape=plaintext
+node0x558b68072340 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >the worst</td></tr>
-					<tr><td port= "lchild">L:0x563eebe3a5a0</td><td port="rchild">R: 0x563eebe3a5e0</td></tr>
+					<tr><td colspan="2" bgcolor="lightskyblue" >inanimate</td></tr>
+					<tr><td port= "lchild">L:0x558b68072380</td><td port="rchild">R: 0x558b68072440</td></tr>
 				</table>>];
-	node0x563eebe3a560:lchild -> node0x563eebe3a5a0[style=bold, arrowhead=vee label = "Yes"];
-	node0x563eebe3a560:rchild -> node0x563eebe3a5e0[style=bold, arrowhead=vee label = "No"];
-node0x563eebe3a5e0 [shape=plaintext
-					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >macos</td></tr>
-					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
-				</table>>];
-node0x563eebe3a520 [shape=plaintext
-					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >shit system</td></tr>
-					<tr><td port= "lchild">L:0x563eebe3a560</td><td port="rchild">R: 0x563eebe3a620</td></tr>
-				</table>>];
-	node0x563eebe3a520:lchild -> node0x563eebe3a560[style=bold, arrowhead=vee label = "Yes"];
-	node0x563eebe3a520:rchild -> node0x563eebe3a620[style=bold, arrowhead=vee label = "No"];
-node0x563eebe3a660 [shape=plaintext
+	node0x558b68072340:lchild -> node0x558b68072380[style=bold, arrowhead=vee label = "Yes"];
+	node0x558b68072340:rchild -> node0x558b68072440[style=bold, arrowhead=vee label = "No"];
+node0x558b68072480 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >Walter White</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x563eebe3a620 [shape=plaintext
+node0x558b68072440 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >chemistry teacher</td></tr>
-					<tr><td port= "lchild">L:0x563eebe3a660</td><td port="rchild">R: 0x563eebe3a6a0</td></tr>
+					<tr><td port= "lchild">L:0x558b68072480</td><td port="rchild">R: 0x558b680724c0</td></tr>
 				</table>>];
-	node0x563eebe3a620:lchild -> node0x563eebe3a660[style=bold, arrowhead=vee label = "Yes"];
-	node0x563eebe3a620:rchild -> node0x563eebe3a6a0[style=bold, arrowhead=vee label = "No"];
-node0x563eebe3a6a0 [shape=plaintext
+	node0x558b68072440:lchild -> node0x558b68072480[style=bold, arrowhead=vee label = "Yes"];
+	node0x558b68072440:rchild -> node0x558b680724c0[style=bold, arrowhead=vee label = "No"];
+node0x558b68072500 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
-					<tr><td colspan="2" bgcolor="lightskyblue" >linux</td></tr>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Varnike</td></tr>
+					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
+				</table>>];
+node0x558b680724c0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >soviet detective</td></tr>
+					<tr><td port= "lchild">L:0x558b68072500</td><td port="rchild">R: 0x558b68072540</td></tr>
+				</table>>];
+	node0x558b680724c0:lchild -> node0x558b68072500[style=bold, arrowhead=vee label = "Yes"];
+	node0x558b680724c0:rchild -> node0x558b68072540[style=bold, arrowhead=vee label = "No"];
+node0x558b68072580 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Harry Potter</td></tr>
+					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
+				</table>>];
+node0x558b68072540 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >wizard</td></tr>
+					<tr><td port= "lchild">L:0x558b68072580</td><td port="rchild">R: 0x558b680725c0</td></tr>
+				</table>>];
+	node0x558b68072540:lchild -> node0x558b68072580[style=bold, arrowhead=vee label = "Yes"];
+	node0x558b68072540:rchild -> node0x558b680725c0[style=bold, arrowhead=vee label = "No"];
+node0x558b680725c0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >Rust Kolhe</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
 }

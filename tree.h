@@ -13,12 +13,6 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-//#define NODE_BOTH_CHILD_CHECK
-#define VALIDATE_TREE_INTEGRY
-//#define TREE_CHECK_DUMP
-
-#define DEBUG 1
-
 #define  $ 			printf("\t\t\t---ON LINE %d IN FUNCTION %s---\n", __LINE__, __func__);
 
 #define SET_ERR(errtype)        return ERRNUM = errtype;
@@ -59,11 +53,6 @@ struct TNODE {
 #endif
 };
 
-struct TREE {
-	TNODE *root;
-	int mode;
-};
-
 enum SUBTREE_SIDE {
 	LEFT  = 0,
 	RIGHT = 1
@@ -79,7 +68,7 @@ TNODE *TreeFind(TNODE *node);
 
 void TreeDump(TNODE *node);
 void TreeDotDump(TNODE *node);
-void VisitPrint(TNODE *node);
+void VisitPrint(TNODE *node, FILE *fout = stdout);
 
 int TreeCheck(TNODE *node);
 #endif // TREE_H

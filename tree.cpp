@@ -6,6 +6,7 @@ static void visit_check(TNODE *node, int flagval = 0);
 static int TreeTraversePre(TNODE *root);
 static int TreeTraverseDelete(TNODE *root);
 
+int _tree_check(TNODE *node);
 
 FILE *file = NULL;
 
@@ -86,6 +87,8 @@ static int TreeTraverseDelete(TNODE *node)
 		TreeTraverseDelete(node->right);
 	
 	free(node);
+
+	return 0;
 }
 
 static int TreeTraversePre(TNODE *node)
@@ -102,6 +105,7 @@ static int TreeTraversePre(TNODE *node)
 		
 	if (node->right)
 		TreeTraversePre(node->right);
+	return 0;
 }
 
 void TreeDump(TNODE *root)
@@ -143,9 +147,7 @@ int _tree_check(TNODE *node)
 	CHECK_(node == NULL,  						TREE_NULL_NODE);
 	CHECK_(node->data.strptr == NULL, 				TREE_NULL_DATA);
 	CHECK_((node->left == node->right) && (node->left != NULL),  	TREE_SAME_CHILD);
-#ifdef NODE_BOTH_CHILD_CHECK
-	CHECK_((node->left == NULL) ^ (node->right == NULL),		TREE_ONE_CHILD);
-#endif
+	
 	return NO_ERR;
 }
 
@@ -189,7 +191,7 @@ static void visit_check(TNODE *node, int flagval)
 #endif
 
 #ifdef TREE_CHECK_DUMP
-	TreeDotDump(node);
+	VisitPrint(node, file);
 #endif
 	if (node->left)
 		visit_check(node->left, flagval);
@@ -198,9 +200,14 @@ static void visit_check(TNODE *node, int flagval)
 		visit_check(node->right, flagval);
 }
 
-void VisitPrint(TNODE *node)
+void VisitPrint(TNODE *node, FILE *fout)
 {
-	printf("node : [  %p  ], data : [%s], len : [  %d  ], left : [  %p  ], right : [  %p  ]\n", 
+	if (!fout)
+		return;
+	if (!node)
+		return;
+
+	fprintf(fout, "node : [  %p  ], data : [%s], len : [  %d  ], left : [  %p  ], right : [  %p  ]\n", 
 		node, node->data.strptr, node->data.len, node->left, node->right);
 }
 

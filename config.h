@@ -25,5 +25,23 @@
 
 #define CANARIES_CHECK 1
 
+/*
+ * list validate tree intehry
+ */
+#define VALIDATE_TREE_INTEGRY
+
+/*
+ * print tree info while checking
+ */
+
+//#define TREE_CHECK_DUMP
+
+/*
+ * akinator debug mode
+ */
+#define AKINATOR_DEBUG
+
+
+
 
 #endif

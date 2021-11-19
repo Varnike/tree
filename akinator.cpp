@@ -2,7 +2,7 @@
 
 static int guess_object(TNODE *root, Stack *stack);
 static int add_new_node(TNODE *node, Stack *call_nodes);
-static int define_object(Stack *stack, int start = 0);
+static int define_object(Stack *stack, int start = 0, int end = -1);
 static int get_answer(void);
 static int print_database(TNODE *node, FILE *fout);
 static int read_database(TNODE **node, textBuff *btext, int ip);
@@ -11,13 +11,15 @@ static int free_alloc_nodes(Stack *alloc_nodes);
 static int node_search(TNODE *tree, Stack *stack, const char *key);
 static int compare_objects(Stack *stack1, Stack *stack2);
 static void clearStdin();
+#ifdef AKINATOR_DEBUG
+FILE *debug_output = NULL;
+#endif
 
 int AkinatorGuess(TNODE *root, Stack *alloc_nodes)
 {
 	if (!root)
 		return ERRNUM = TREE_NULL_NODE;
 
-	TNODE *node = root;
 	Stack stack = {};
 	
 	StackCtor(&stack, 8);
@@ -25,6 +27,7 @@ int AkinatorGuess(TNODE *root, Stack *alloc_nodes)
 
 	if (guess_object(root, &stack) == 1) {
 		printf("EZ!\n");
+		printf("Object properties:\n");
 		define_object(&stack);
 	} else {
 		add_new_node((TNODE *)StackPop(&stack), alloc_nodes);
@@ -36,8 +39,12 @@ int AkinatorGuess(TNODE *root, Stack *alloc_nodes)
 	return 0;
 }
 
-int AkinatorProcess(TNODE *tree1)
+int AkinatorProcess()
 {
+#ifdef AKINATOR_DEBUG
+	debug_output = fopen("akinator_log.txt", "w");
+	CHECK_(!debug_output, FOPEN_ERR);
+#endif
 	int mode = 0;
 	TNODE *tree = 0;
 	textBuff btext = {};
@@ -49,7 +56,7 @@ int AkinatorProcess(TNODE *tree1)
 	StackCtor(&alloc_nodes, 8);
 	
 	do {
-		printf("\n\n\nEnter Akinator mode: Exit[0], Guess[1], Find object[2], Compare[3], Save Database[4]\n");
+		printf("\n\n\nEnter Akinator mode: Exit[0], Guess[1], Find object[2], Compare[3], Save Database[4], Show akinator tree[5]\n");
 		
 		scanf("%d", &mode);
 	
@@ -66,6 +73,9 @@ int AkinatorProcess(TNODE *tree1)
 		case AKN_SAVE:
 			AkinatorSave(tree);
 			break;
+		case AKN_SHOW:
+			TreeDump(tree);
+			break;
 		default:
 			mode = 0;
 			break;
@@ -80,8 +90,11 @@ int AkinatorProcess(TNODE *tree1)
 	free(btext.buff);
 	TreeDtor(tree);
 	StackDtor(&alloc_nodes);
-
-	return ERRNUM;
+#ifdef AKINATOR_DEBUG
+	fclose(debug_output);
+#endif
+	ERRNUM_CHECK(ERRNUM);
+	return NO_ERR;
 }
 
 int AkinatorFind(TNODE *tree)
@@ -96,6 +109,7 @@ int AkinatorFind(TNODE *tree)
 	printf("Enter object name you want to find: ");
 	clearStdin();
 	read_stdin_sentence(target_name, INPUT_BUFF_SIZE);
+	
 	if (ERRNUM)
 		goto err_free_buff;
 	
@@ -111,7 +125,8 @@ int AkinatorFind(TNODE *tree)
 	} else {
 		printf("\nObject [%s]not found.\n", target_name);
 	}
-
+	
+	StackDtor(&node_stack);
 err_free_buff:
 	free(target_name);
 	return ERRNUM;
@@ -198,7 +213,7 @@ static int guess_object(TNODE *node, Stack *stack)
 		StackPush(stack, node);
 		ERRNUM_CHECK(-1);
 
-		printf("%s\n", node->data.strptr);
+		printf("Is it %s?\n", node->data.strptr);
 
 		switch(get_answer()) {
 		case POS_ANSW:
@@ -207,7 +222,7 @@ static int guess_object(TNODE *node, Stack *stack)
 		case NEG_ANSW:
 			node = node->right;
 			break;
-		case INV_ANSW:
+		default:
 			printf("Invalid answer, please try again.\n");
 			break;
 		}
@@ -215,7 +230,7 @@ static int guess_object(TNODE *node, Stack *stack)
 	
 	StackPush(stack, node);
 	
-	printf("Is it %s\n", node->data.strptr);	
+	printf("Is it %s?\n", node->data.strptr);	
 	int right_guess = get_answer();
 	
 	return right_guess;
@@ -280,9 +295,9 @@ int AkinatorInit(TNODE **tree, textBuff *btext)
 	const char *namein = "akinator_database.txt";
 	btext->file_in = fopen(namein, "r");
 	read_from_file(btext, namein);
-
-	printf("%s\n", btext->buff);
-	
+#ifdef AKINATOR_DEBUG
+	fprintf(debug_output, "%s\n", btext->buff);
+#endif
 	read_database(tree, btext, 0);
 	ERRNUM_CHECK(ERRNUM);
 
@@ -292,18 +307,20 @@ int AkinatorInit(TNODE **tree, textBuff *btext)
 	return 0;
 }
 
-static int define_object(Stack *stack, int start)
+static int define_object(Stack *stack, int start, int end)
 {
 	int size = getStackSize(stack);
 	TNODE **stack_data = (TNODE **)getStackData(stack);
 	TNODE *tmp = NULL;
+	
+	if (end < 0)
+		end = size - 1;
 
-	printf("Object properties:\n");
-	for (int it = start; it != size - 1; it++) {
+	for (int it = start; it != end; it++) {
 		tmp = stack_data[it];
 		
 		CHECK_(!tmp || !tmp->data.strptr, TREE_NULL_DATA);
-
+		printf("\t~");
 		if (tmp->right == (stack_data[it + 1]))
 			printf("NOT ");
 		
@@ -314,7 +331,7 @@ static int define_object(Stack *stack, int start)
 
 static int read_stdin_sentence(char *buff, int buffsize)
 {
-	char ch = 0;
+	int ch = 0;
 	int cnt = 0;
 	
 	while((ch = getchar()) != EOF && ch != '\n') {
@@ -322,8 +339,10 @@ static int read_stdin_sentence(char *buff, int buffsize)
 			ERRNUM = AKINATOR_BUFF_OVERFLOW;
 			return -1;
 		}
-		printf("Char added : %c\n", ch);
-		buff[cnt++] = ch;
+#ifdef AKINATOR_DEBUG
+		fprintf(debug_output, "Char added : %c\n", ch);
+#endif
+		buff[cnt++] = (unsigned char)ch;
 	}
 	
 	return cnt;
@@ -349,6 +368,8 @@ static int print_database(TNODE *node, FILE *fout)
 	if (node->right)
 		print_database(node->right, fout);
 	fprintf(fout, "} ");
+
+	return 0;
 }
 
 static int read_database(TNODE **node, textBuff *btext, int ip)
@@ -386,8 +407,9 @@ static int read_database(TNODE **node, textBuff *btext, int ip)
 
 			btext->buff[ip-1] = '\0';
 			(*node)->data.len = str_len; 
-
-			VisitPrint(*node);
+#ifdef AKINATOR_DEBUG
+			VisitPrint(*node, debug_output);
+#endif
 			return (ip + 1);	
 		}
 
@@ -417,9 +439,9 @@ static int node_search(TNODE *node, Stack *stack, const char *key)
 {
 	if (!node || !stack || !key || !node->data.strptr)
 		return NODE_NOT_FOUND;
-	
-	printf("comparing key \"%s\" and str \"%s\"\n", key, node->data.strptr);
-	
+#ifdef AKINATOR_DEBUG
+	fprintf(debug_output, "comparing key \"%s\" and str \"%s\"\n", key, node->data.strptr);
+#endif
 	StackPush(stack, node);
 
 	if (strncmp(key, node->data.strptr, node->data.len) == 0)
@@ -456,22 +478,23 @@ static int compare_objects(Stack *stack1, Stack *stack2)
 	printf("%s and %s have common properties:\n", 
 			stack_data1[size1 -1]->data.strptr, stack_data2[size2 - 1]->data.strptr);
 	/* common properties */
-	for ( ; it != ((size1 < size2) ? size1 : size2) - 2; it++) {
-		if (stack_data1[it + 1] != stack_data2[it + 1])
+	for ( ; it != ((size1 < size2) ? size1 : size2) - 1; it++) {
+		if (stack_data1[it + 1] != stack_data2[it + 1]) 	
 			break;
-		printf("\t%s\n", stack_data1[it]->data.strptr);
+		
+		define_object(stack1, it, it + 1);
 	}
+
 	if (it == 0)
 		printf("\tNONE.\n");
 	/* difference */
 	printf("%s and %s have some differences:\n", 
 			stack_data1[size1 -1]->data.strptr, stack_data2[size2 - 1]->data.strptr);
-
+	
 	printf("%s:\n", stack_data1[size1 - 1]->data.strptr);
 	define_object(stack1, it);
 
 	printf("%s:\n", stack_data2[size2 - 1]->data.strptr);
 	define_object(stack2, it);
 	return 0;
-
 }
