@@ -1,12 +1,85 @@
 { inanimate { good operation system { linux } { windows } } { chemistry teacher { Walter White } { soviet detective { Varnike } { wizard { Harry Potter } { Rust Kolhe } } } } } 
-node : [  0x558b680723c0  ], data : [linux], len : [  5  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b68072400  ], data : [windows], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b68072380  ], data : [good operation system], len : [  22  ], left : [  0x558b680723c0  ], right : [  0x558b68072400  ]
-node : [  0x558b68072480  ], data : [Walter White], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b68072500  ], data : [Varnike], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b68072580  ], data : [Harry Potter], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b680725c0  ], data : [Rust Kolhe], len : [  10  ], left : [  (nil)  ], right : [  (nil)  ]
-node : [  0x558b68072540  ], data : [wizard], len : [  7  ], left : [  0x558b68072580  ], right : [  0x558b680725c0  ]
-node : [  0x558b680724c0  ], data : [soviet detective], len : [  17  ], left : [  0x558b68072500  ], right : [  0x558b68072540  ]
-node : [  0x558b68072440  ], data : [chemistry teacher], len : [  18  ], left : [  0x558b68072480  ], right : [  0x558b680724c0  ]
-node : [  0x558b68072340  ], data : [inanimate], len : [  10  ], left : [  0x558b68072380  ], right : [  0x558b68072440  ]
+node : [  0x562cd0a543c0  ], data : [linux], len : [  5  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a54400  ], data : [windows], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a54380  ], data : [good operation system], len : [  22  ], left : [  0x562cd0a543c0  ], right : [  0x562cd0a54400  ]
+node : [  0x562cd0a54480  ], data : [Walter White], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a54500  ], data : [Varnike], len : [  7  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a54580  ], data : [Harry Potter], len : [  12  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a545c0  ], data : [Rust Kolhe], len : [  10  ], left : [  (nil)  ], right : [  (nil)  ]
+node : [  0x562cd0a54540  ], data : [wizard], len : [  7  ], left : [  0x562cd0a54580  ], right : [  0x562cd0a545c0  ]
+node : [  0x562cd0a544c0  ], data : [soviet detective], len : [  17  ], left : [  0x562cd0a54500  ], right : [  0x562cd0a54540  ]
+node : [  0x562cd0a54440  ], data : [chemistry teacher], len : [  18  ], left : [  0x562cd0a54480  ], right : [  0x562cd0a544c0  ]
+node : [  0x562cd0a54340  ], data : [inanimate], len : [  10  ], left : [  0x562cd0a54380  ], right : [  0x562cd0a54440  ]
+Char added : P
+Char added : R
+Char added : O
+Char added : N
+Char added : I
+Char added : N
+Char added :  
+Char added : T
+Char added : H
+Char added : E
+Char added :  
+Char added : M
+Char added : A
+Char added : J
+Char added : O
+Char added : R
+Char added : s
+Char added : o
+Char added :  
+Char added : t
+Char added : o
+Char added : u
+Char added : g
+Char added : h
+Char added : P
+Char added : R
+Char added : O
+Char added : N
+Char added : I
+Char added : N
+Char added :  
+Char added : T
+Char added : H
+Char added : E
+Char added :  
+Char added : M
+Char added : A
+Char added : J
+Char added : O
+Char added : R
+Char added : H
+Char added : a
+Char added : r
+Char added : r
+Char added : y
+Char added :  
+Char added : P
+Char added : o
+Char added : t
+Char added : t
+Char added : e
+Char added : r
+comparing key "PRONIN THE MAJOR" and str "inanimate"
+comparing key "PRONIN THE MAJOR" and str "good operation system"
+comparing key "PRONIN THE MAJOR" and str "linux"
+comparing key "PRONIN THE MAJOR" and str "windows"
+comparing key "PRONIN THE MAJOR" and str "chemistry teacher"
+comparing key "PRONIN THE MAJOR" and str "Walter White"
+comparing key "PRONIN THE MAJOR" and str "soviet detective"
+comparing key "PRONIN THE MAJOR" and str "so tough"
+comparing key "PRONIN THE MAJOR" and str "PRONIN THE MAJOR"
+comparing key "Harry Potter" and str "inanimate"
+comparing key "Harry Potter" and str "good operation system"
+comparing key "Harry Potter" and str "linux"
+comparing key "Harry Potter" and str "windows"
+comparing key "Harry Potter" and str "chemistry teacher"
+comparing key "Harry Potter" and str "Walter White"
+comparing key "Harry Potter" and str "soviet detective"
+comparing key "Harry Potter" and str "so tough"
+comparing key "Harry Potter" and str "PRONIN THE MAJOR"
+comparing key "Harry Potter" and str "Varnike"
+comparing key "Harry Potter" and str "wizard"
+comparing key "Harry Potter" and str "Harry Potter"

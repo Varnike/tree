@@ -11,6 +11,7 @@ static int free_alloc_nodes(Stack *alloc_nodes);
 static int node_search(TNODE *tree, Stack *stack, const char *key);
 static int compare_objects(Stack *stack1, Stack *stack2);
 static void clearStdin();
+
 #ifdef AKINATOR_DEBUG
 FILE *debug_output = NULL;
 #endif
@@ -90,6 +91,7 @@ int AkinatorProcess()
 	free(btext.buff);
 	TreeDtor(tree);
 	StackDtor(&alloc_nodes);
+
 #ifdef AKINATOR_DEBUG
 	fclose(debug_output);
 #endif
@@ -97,11 +99,11 @@ int AkinatorProcess()
 	return NO_ERR;
 }
 
+// TODO do while 0
 int AkinatorFind(TNODE *tree)
 {
 	CHECK_(tree == NULL, TREE_NULL_NODE);
 	
-
 	char *target_name = (char *)calloc(INPUT_BUFF_SIZE, sizeof(char));
 	CHECK_(!target_name, CALLOC_ERR);	
 	Stack node_stack = {};
@@ -112,13 +114,11 @@ int AkinatorFind(TNODE *tree)
 	
 	if (ERRNUM)
 		goto err_free_buff;
-	
-	
+		
 	StackCtor(&node_stack, 8);
 	if (ERRNUM)
 		goto err_free_buff;
 
-	
 	if (node_search(tree, &node_stack, target_name) == NODE_FOUND) {
 		printf("\nObject [%s] found. It has the following properties:\n", target_name);
 		define_object(&node_stack);
@@ -127,6 +127,7 @@ int AkinatorFind(TNODE *tree)
 	}
 	
 	StackDtor(&node_stack);
+
 err_free_buff:
 	free(target_name);
 	return ERRNUM;

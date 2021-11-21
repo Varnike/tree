@@ -1,66 +1,78 @@
 digraph dump_graph {
 	rankdir=TV; 
-node0x558b680723c0 [shape=plaintext
+node0x562cd0a543c0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >linux</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x558b68072380 [shape=plaintext
+node0x562cd0a54380 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >good operation system</td></tr>
-					<tr><td port= "lchild">L:0x558b680723c0</td><td port="rchild">R: 0x558b68072400</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a543c0</td><td port="rchild">R: 0x562cd0a54400</td></tr>
 				</table>>];
-	node0x558b68072380:lchild -> node0x558b680723c0[style=bold, arrowhead=vee label = "Yes"];
-	node0x558b68072380:rchild -> node0x558b68072400[style=bold, arrowhead=vee label = "No"];
-node0x558b68072400 [shape=plaintext
+	node0x562cd0a54380:lchild -> node0x562cd0a543c0[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a54380:rchild -> node0x562cd0a54400[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a54400 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >windows</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x558b68072340 [shape=plaintext
+node0x562cd0a54340 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >inanimate</td></tr>
-					<tr><td port= "lchild">L:0x558b68072380</td><td port="rchild">R: 0x558b68072440</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a54380</td><td port="rchild">R: 0x562cd0a54440</td></tr>
 				</table>>];
-	node0x558b68072340:lchild -> node0x558b68072380[style=bold, arrowhead=vee label = "Yes"];
-	node0x558b68072340:rchild -> node0x558b68072440[style=bold, arrowhead=vee label = "No"];
-node0x558b68072480 [shape=plaintext
+	node0x562cd0a54340:lchild -> node0x562cd0a54380[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a54340:rchild -> node0x562cd0a54440[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a54480 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >Walter White</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x558b68072440 [shape=plaintext
+node0x562cd0a54440 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >chemistry teacher</td></tr>
-					<tr><td port= "lchild">L:0x558b68072480</td><td port="rchild">R: 0x558b680724c0</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a54480</td><td port="rchild">R: 0x562cd0a544c0</td></tr>
 				</table>>];
-	node0x558b68072440:lchild -> node0x558b68072480[style=bold, arrowhead=vee label = "Yes"];
-	node0x558b68072440:rchild -> node0x558b680724c0[style=bold, arrowhead=vee label = "No"];
-node0x558b68072500 [shape=plaintext
+	node0x562cd0a54440:lchild -> node0x562cd0a54480[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a54440:rchild -> node0x562cd0a544c0[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a553e0 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >PRONIN THE MAJOR</td></tr>
+					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
+				</table>>];
+node0x562cd0a54500 [shape=plaintext
+					label=<<table border='1' cellborder='1'>
+					<tr><td colspan="2" bgcolor="lightskyblue" >so tough</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a553e0</td><td port="rchild">R: 0x562cd0a553a0</td></tr>
+				</table>>];
+	node0x562cd0a54500:lchild -> node0x562cd0a553e0[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a54500:rchild -> node0x562cd0a553a0[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a553a0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >Varnike</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x558b680724c0 [shape=plaintext
+node0x562cd0a544c0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >soviet detective</td></tr>
-					<tr><td port= "lchild">L:0x558b68072500</td><td port="rchild">R: 0x558b68072540</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a54500</td><td port="rchild">R: 0x562cd0a54540</td></tr>
 				</table>>];
-	node0x558b680724c0:lchild -> node0x558b68072500[style=bold, arrowhead=vee label = "Yes"];
-	node0x558b680724c0:rchild -> node0x558b68072540[style=bold, arrowhead=vee label = "No"];
-node0x558b68072580 [shape=plaintext
+	node0x562cd0a544c0:lchild -> node0x562cd0a54500[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a544c0:rchild -> node0x562cd0a54540[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a54580 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >Harry Potter</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>
 				</table>>];
-node0x558b68072540 [shape=plaintext
+node0x562cd0a54540 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >wizard</td></tr>
-					<tr><td port= "lchild">L:0x558b68072580</td><td port="rchild">R: 0x558b680725c0</td></tr>
+					<tr><td port= "lchild">L:0x562cd0a54580</td><td port="rchild">R: 0x562cd0a545c0</td></tr>
 				</table>>];
-	node0x558b68072540:lchild -> node0x558b68072580[style=bold, arrowhead=vee label = "Yes"];
-	node0x558b68072540:rchild -> node0x558b680725c0[style=bold, arrowhead=vee label = "No"];
-node0x558b680725c0 [shape=plaintext
+	node0x562cd0a54540:lchild -> node0x562cd0a54580[style=bold, arrowhead=vee label = "Yes"];
+	node0x562cd0a54540:rchild -> node0x562cd0a545c0[style=bold, arrowhead=vee label = "No"];
+node0x562cd0a545c0 [shape=plaintext
 					label=<<table border='1' cellborder='1'>
 					<tr><td colspan="2" bgcolor="lightskyblue" >Rust Kolhe</td></tr>
 					<tr><td port= "lchild">L:(nil)</td><td port="rchild">R: (nil)</td></tr>

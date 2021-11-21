@@ -3,8 +3,8 @@
 
 
 int main()
-{	
-	TNODE *root = NULL;
+{		
 	AkinatorProcess();
+	ERRNUM_CHECK(ERRNUM);
 	return 0;
 }
